@@ -15,4 +15,18 @@ jobs:
           node-version: 'latest'
       - run: npm install
       - run: npm run build
+
+  test:
+    needs: build
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: checkout repo
+        uses: actions/checkout@v4
+      - name: use node
+        uses: actions/setup-node@v7
+        with:
+          node-version: 'latest'
+      - run: npm install
+      - run: npm test
         
